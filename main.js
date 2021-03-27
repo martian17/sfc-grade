@@ -62,7 +62,7 @@ var processField = function(field){
         sub.pass = true;
         sub.credits = parseFloat(texts[3]);
         sub.validCredits = sub.credits
-        if(sub.grade === "Ｄ" || sub.grade === "Ｆ" || sub.grade === "－"){
+        if(sub.grade === "Ｄ" || sub.grade === "Ｆ" || sub.grade === "－" || sub.grade === "？"){
             sub.pass = false;
             sub.validCredits = 0;
         }
