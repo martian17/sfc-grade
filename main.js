@@ -62,7 +62,7 @@ var processField = function(field){
         sub.pass = true;
         sub.credits = parseFloat(texts[3]);
         sub.validCredits = sub.credits
-        if(sub.grade === "D" || sub.grade === "F" || sub.grade === "－"){
+        if(sub.grade === "Ｄ" || sub.grade === "Ｆ" || sub.grade === "－"){
             sub.pass = false;
             sub.validCredits = 0;
         }
@@ -99,6 +99,7 @@ var getClassProfile = function(){
     console.log("基盤科目: "+calculateKibanSum(classes)+"単位");
     console.log("先端科目: "+calculateSentanSum(classes)+"単位");
     console.log("言語科目: "+calculateGengoSum(classes)+"単位");
+    console.log("全教科合計: "+calculateAllSum(classes)+"単位");
 };
 
 var calculateKibanSum = function(classes){
@@ -130,6 +131,15 @@ var calculateGengoSum = function(classes){
         if(subject.field.list1[2] === "言語コミュニケーション科目"){
             credits += subject.validCredits;
         }
+    }
+    return credits;
+};
+
+var calculateAllSum = function(classes){
+    var credits = 0;
+    for(var i = 0; i < classes.length; i++){
+        var subject = classes[i];
+        credits += subject.validCredits;
     }
     return credits;
 };
